@@ -1,0 +1,13 @@
+#!/bin/sh
+
+git=$(git rev-parse --git-dir)
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+branches=$(git branch | awk '{ print $2 }')
+echo $branches
+
+for i in $branches; do
+  echo item: $i
+done

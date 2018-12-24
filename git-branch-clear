@@ -1,13 +1,21 @@
 #!/bin/sh
+# TODO: Make it work with branch-alias
+# TODO: Why 'Deleted: command not found' error occurs
 
+# Check if git exist
 git=$(git rev-parse --git-dir)
 if [ $? -ne 0 ]; then
+    echo "Not a git repository."
     exit 1
 fi
 
-branches=$(git branch | awk '{ print $2 }')
-echo $branches
+# Get branches
+branches=$(git branch --no-contains)
+echo ${branches[@]}
 
-for i in $branches; do
-  echo item: $i
+# Delete branches
+for branch in $branches
+do
+  $(git branch -D $branch)
+  echo "Deleted: $branch"
 done

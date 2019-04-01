@@ -3,7 +3,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 ### $PATH update
 export PATH=$PATH:~/bash-scripts
-export PATH=$PATH:~/Documents/gitScripts
+
 ### Add git branch to path
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'

@@ -2,18 +2,21 @@
 
 import os
 
-reserved_branches = ['master', 'develop', 'd']
+reserved_branches = ['master', 'develop']
 current_branch_symbol = '*'
+branch_alias_symbol = '->'
 branches_to_delete = []
 
 branches = os.popen('git branch').read().split('\n')
 for b in branches:
   branch = b.strip()
-  if not len(branch):
+  if not len(branch): # skip empty string
     continue
-  if current_branch_symbol in branch:
+  if current_branch_symbol in branch: # don't clear active branch
     continue
-  if branch in reserved_branches:
+  if branch in reserved_branches: # don't clear reserved branches
+    continue
+  if branch_alias_symbol in branch: # don't clear branch aliases
     continue
   branches_to_delete.append(branch)
   

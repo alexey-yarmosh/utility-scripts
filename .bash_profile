@@ -15,8 +15,6 @@ osascript -e 'tell application "System Events" to keystroke "e" using {command d
 
 ### Aliases
 alias ls='ls -a'
-alias comp-rm='bash component-rename.sh'
-alias test='bash test.sh'
 
 ### NVM
 export NVM_DIR="$HOME/.nvm"

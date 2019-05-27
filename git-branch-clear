@@ -30,7 +30,7 @@ def main():
     
   print('Branches to delete:')
   for branch in branches_to_delete:
-    print(' ', branch)
+    print('  ', branch, sep='')
   if not confirm():
     exit()
   for branch in branches_to_delete:

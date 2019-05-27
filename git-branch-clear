@@ -5,24 +5,37 @@ import os
 reserved_branches = ['master', 'develop']
 current_branch_symbol = '*'
 branch_alias_symbol = '->'
-branches_to_delete = []
 
-branches = os.popen('git branch').read().split('\n')
-for b in branches:
-  branch = b.strip()
-  if not len(branch): # skip empty string
-    continue
-  if current_branch_symbol in branch: # don't clear active branch
-    continue
-  if branch in reserved_branches: # don't clear reserved branches
-    continue
-  if branch_alias_symbol in branch: # don't clear branch aliases
-    continue
-  branches_to_delete.append(branch)
-  
-print('Branches to delete:', branches_to_delete)
+def confirm():
+  answer = ""
+  while answer not in ["y", "n"]:
+    answer = input("OK to push to continue [Y/N]? ").lower()
+  return answer == "y"
 
-for branch in branches_to_delete:
-  os.system('git branch -D {0}'.format(branch))
+def main():
+  branches_to_delete = []
+  branches = os.popen('git branch').read().split('\n')
 
-print('New branches state:', os.popen('git branch').read(), sep='\n')
+  for b in branches:
+    branch = b.strip()
+    if not len(branch): # skip empty string
+      continue
+    if current_branch_symbol in branch: # don't clear active branch
+      continue
+    if branch in reserved_branches: # don't clear reserved branches
+      continue
+    if branch_alias_symbol in branch: # don't clear branch aliases
+      continue
+    branches_to_delete.append(branch)
+    
+  print('Branches to delete:')
+  for branch in branches_to_delete:
+    print(' ', branch)
+  if not confirm():
+    exit()
+  for branch in branches_to_delete:
+    os.system('git branch -D {0}'.format(branch))
+
+  print('New branches state:', os.popen('git branch').read(), sep='\n')
+
+main()

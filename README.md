@@ -1,15 +1,10 @@
-# git-scripts
-Some help git scripts
+# utility-scripts
 
 1. Add `bash-scripts` folder to $PATH
-2. Set aliases in .bash_profile (ex. `alias test="bash test.sh"`)
-3. Enjoy
+2. Set `chmod +rwx bash-scripts/*` 
 
-# Man
-
-## Delete all local branches
-Will skip alliased branches, current, `master` and `develop`
+# Manual
 
 ```bash
-branch-clear
+scripts-man
 ```

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
 
-print('git branch-clear', ' - ' 'Deletes all local branches', sep='')
-print('git branch-alias <alias> <branch>', ' - ', 'Creates an alias for chosen branch', sep='')
+print('git branch-clear', '-' 'Deletes all local branches')
+print('git branch-alias <alias> <branch>', '-', 'Creates an alias for chosen branch')
+print('rename-files <path> <new_name>', '-', 'Renames all files in directory to passed name')

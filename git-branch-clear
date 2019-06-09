@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 
 import os
+from utils.confirm import confirm
 
 reserved_branches = ['master', 'develop']
 current_branch_symbol = '*'
 branch_alias_symbol = '->'
-
-def confirm():
-  answer = ""
-  while answer not in ["y", "n"]:
-    answer = input("OK to push to continue [Y/N]? ").lower()
-  return answer == "y"
 
 def main():
   branches_to_delete = []

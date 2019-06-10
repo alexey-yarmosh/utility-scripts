@@ -17,9 +17,14 @@ def main():
 
   for file in os.listdir(folder):
     src = os.path.join(folder, file)
-    full_target_name = target_name
+    file_extension = os.path.splitext(src)[1]
+
     if (i > 0):
       full_target_name = f'{target_name}-{i + 1}'
+    else:
+      full_target_name = target_name
+
+    full_target_name += file_extension
 
     dst = os.path.join(folder, full_target_name)
     os.rename(src, dst)

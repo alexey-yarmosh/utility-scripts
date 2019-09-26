@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+import os
+
+def main():
+  current_directory = 'document-review' # help, prismExport, configs, documents
+  components = os.popen('ls ./{0}/components'.format(current_directory)).read().split('\n')
+  print(components)
+
+  for component in components:
+    print(component)
+    os.system('relative-to-alias --src ./{0} --alias {0}/components/{1} --alias-path ./{0}/components/{1} --extensions "js,jsx,test.js" --ignore ["./**/node_modules/**", "./**"]'.format(current_directory, component))
+
+main()
